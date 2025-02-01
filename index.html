@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant/Cafe</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 2em 0;
+        }
+
+        header img {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #333;
+            padding: 1em 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+
+        /* Menu Section */
+        section {
+            padding: 2em 5%;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.2em;
+            color: #333;
+        }
+
+        .menu-item {
+            display: inline-block;
+            width: 30%;
+            margin: 1.5em 1%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .menu-item img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .menu-item p {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 1em;
+        }
+
+        /* Reservation Form */
+        form {
+            display: grid;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        input[type="text"], input[type="number"], input[type="date"], input[type="time"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            color: #333;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.2em;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Location Section */
+        #location {
+            padding: 2em 5%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container {
+            margin-top: 1.5em;
+            border-radius: 8px;
+            overflow: hidden; /* Ensures iframe corners are rounded */
+        }
+
+        iframe {
+            width: 100%; /* Makes the iframe responsive */
+            border-radius: 8px; /* Optional: For rounded corners */
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background-color: #fff;
+            margin-top: 2em;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            color: #555;
+        }
+
+        .testimonial cite {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <img src="./Assets/cafe_logo.jpg" alt="Restaurant/Cafe Logo" class="logo">
+        <h1>Welcome to Our Restaurant/Cafe</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#reservation">Reservation</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+    </nav>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2>Menu</h2>
+        <div class="menu-item">
+            <img src="dish1.jpg" alt="Dish 1">
+            <p>Dish 1 - ₹300</p>
+        </div>
+        <div class="menu-item">
+            <img src="dish2.jpg" alt="Dish 2">
+            <p>Dish 2 - ₹350</p>
+        </div>
+        <div class="menu-item">
+            <img src="dish3.jpg" alt="Dish 3">
+            <p>Dish 3 - ₹250</p>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation">
+        <h2>Reservation</h2>
+        <form action="#">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="contact">Contact Number:</label>
+            <input type="text" id="contact" name="contact" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="guests">Number of Guests:</label>
+            <input type="number" id="guests" name="guests" required>
+
+            <label for="requests">Special Requests:</label>
+            <textarea id="requests" name="requests"></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location">
+        <h2>Location</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d937559.6865554532!2d71.47155761718751!3d23.375822870966864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c337e41745715%3A0x1af5b19dec45b1b1!2sTaj%20Gandhinagar%20Resort%20%26%20Spa!5e0!3m2!1sen!2sin!4v1738389579343!5m2!1sen!2sin"
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant/Cafe</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 2em 0;
+        }
+
+        header img {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #333;
+            padding: 1em 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+
+        /* Menu Section */
+        section {
+            padding: 2em 5%;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.2em;
+            color: #333;
+        }
+
+        .menu-item {
+            display: inline-block;
+            width: 30%;
+            margin: 1.5em 1%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .menu-item img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .menu-item p {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 1em;
+        }
+
+        /* Reservation Form */
+        form {
+            display: grid;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        input[type="text"], input[type="number"], input[type="date"], input[type="time"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            color: #333;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.2em;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Location Section */
+        #location {
+            padding: 2em 5%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container {
+            margin-top: 1.5em;
+            border-radius: 8px;
+            overflow: hidden; /* Ensures iframe corners are rounded */
+        }
+
+        iframe {
+            width: 100%; /* Makes the iframe responsive */
+            border-radius: 8px; /* Optional: For rounded corners */
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background-color: #fff;
+            margin-top: 2em;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            color: #555;
+        }
+
+        .testimonial cite {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <img src="D:\cse\Assests\pizza cafe special.jpg" alt="Restaurant/Cafe Logo" class="logo">
+        <h1>Welcome to Our Restaurant/Cafe</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#reservation">Reservation</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+    </nav>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2>Menu</h2>
+        <div class="menu-item">
+            <img src="dish1.jpg" alt="Dish 1">
+            <p>Dish 1 - ₹300</p>
+        </div>
+        <div class="menu-item">
+            <img src="dish2.jpg" alt="Dish 2">
+            <p>Dish 2 - ₹350</p>
+        </div>
+        <div class="menu-item">
+            <img src="dish3.jpg" alt="Dish 3">
+            <p>Dish 3 - ₹250</p>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation">
+        <h2>Reservation</h2>
+        <form action="#">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="contact">Contact Number:</label>
+            <input type="text" id="contact" name="contact" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="guests">Number of Guests:</label>
+            <input type="number" id="guests" name="guests" required>
+
+            <label for="requests">Special Requests:</label>
+            <textarea id="requests" name="requests"></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location">
+        <h2>Location</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d937559.6865554532!2d71.47155761718751!3d23.375822870966864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c337e41745715%3A0x1af5b19dec45b1b1!2sTaj%20Gandhinagar%20Resort%20%26%20Spa!5e0!3m2!1sen!2sin!4v1738389579343!5m2!1sen!2sin"
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p>Address: Your Address Here</p>
+        <p>Phone: Your Phone Number Here</p>
+        <p>Email: Your Email Here</p>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2>Testimonials</h2>
+        <div class="testimonial">
+            <p>"Great food and service!"</p>
+            <cite>- Customer 1</cite>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Restaurant/Cafe. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2>Testimonials</h2>
+        <div class="testimonial">
+            <p>"Great food and service!"</p>
+            <cite>- Customer 1</cite>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Restaurant/Cafe. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
